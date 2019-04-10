@@ -9,4 +9,33 @@
   	<module>ticket-agency-ejb</module>
   	<module>ticket-agency-client</module>
   </modules>
+  
+  <!-- maven build -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>java</executable>
+					<workingDirectory>${project.build.directory}/
+						exec-working-directory</workingDirectory>
+					<arguments>
+						<argument>-classpath</argument>
+						<classpath />
+						<argument>TicketAgencyClient</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
