@@ -5,7 +5,7 @@ import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 @Stateless
-@Remote(TheatreInfo.class)
+@Remote(TheatreInfoRemote.class)
 public class TheatreInfo implements TheatreInfoRemote {
 
 	@EJB
