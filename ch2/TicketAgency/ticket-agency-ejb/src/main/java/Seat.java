@@ -1,5 +1,10 @@
 
 public class Seat {
+	@Override
+	public String toString() {
+		return "Seat [id=" + id + ", price=" + price + ", name=" + name + ", booked=" + booked + "]";
+	}
+
 	private int id, price;
 	private String name;
 	private boolean booked;
