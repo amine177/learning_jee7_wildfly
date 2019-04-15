@@ -24,7 +24,7 @@ public class TicketAgencyClient {
 	public TicketAgencyClient() throws NamingException {
 		final Properties jndiProperties = new Properties();
 		jndiProperties.setProperty(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-		this.context = new InitialContext();
+		this.context = new InitialContext(jndiProperties);
 	}
 
 	private enum Command {
@@ -67,6 +67,7 @@ public class TicketAgencyClient {
 
 	private void handleQuit() {
 		logger.info("Bye");
+		System.exit(0);;
 	}
 
 	private void handleMoney() {
@@ -101,7 +102,7 @@ public class TicketAgencyClient {
 	}
 
 	private TheatreBookerRemote lookupTheatreBookerEJB() throws NamingException {
-		return (TheatreBookerRemote) context.lookup("ejb:/ticket-agency-ejb//ThatreBookerRemote?stateful");
+		return (TheatreBookerRemote) context.lookup("ejb:/ticket-agency-ejb//TheatreBooker!TheatreBookerRemote?stateful");
 	}
 
 	private void showWelcomeMessage() {
